@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 1234
+    url: jdbc:mysql://db:3306/pb_db?serverTimezone=UTC&characterEncoding=UTF-8
+    hikari:
+      maximum-pool-size: 150
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    url: jdbc:mysql://db:3306?serverTimezone=UTC&characterEncoding=UTF-8
+    user: root
+    password: 1234
+    init-sql: "create database if not exists pb_db;"
+    default-schema: pb_db
+
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: false
